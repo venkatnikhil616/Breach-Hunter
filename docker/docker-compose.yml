@@ -1,0 +1,31 @@
+version: "3.9"
+
+services:
+  app:
+    build: ..
+    container_name: breach_hunter_app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - redis
+    env_file:
+      - ../.env
+    volumes:
+      - ../data:/app/data
+
+  redis:
+    image: redis:7
+    container_name: breach_hunter_redis
+    ports:
+      - "6379:6379"
+
+  worker:
+    build: ..
+    container_name: breach_hunter_worker
+    command: celery -A workers.queues_worker worker --loglevel=info
+    depends_on:
+      - redis
+    env_file:
+      - ../.env
+    volumes:
+      - ../data:/app/data
