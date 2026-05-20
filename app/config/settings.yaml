@@ -1,0 +1,42 @@
+app:
+  name: "Password Security Platform"
+  env: "development"
+  debug: true
+
+server:
+  host: "127.0.0.1"
+  port: 8000
+
+cors:
+  allowed_origins:
+    - "*"
+
+logging:
+  level: "INFO"
+  file: null  # e.g. "logs/app.log"
+
+security:
+  secret_key: "change-me"
+  hash_iterations: 100000
+
+redis:
+  url: "redis://localhost:6379/0"
+
+celery:
+  broker_url: "redis://localhost:6379/0"
+  result_backend: "redis://localhost:6379/0"
+
+hibp:
+  enabled: true
+  timeout: 10.0
+
+email:
+  smtp_server: null
+  smtp_port: 587
+  username: null
+  password: null
+  use_tls: true
+  sender: null
+
+reports:
+  dir: "data/reports"
