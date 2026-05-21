@@ -2,7 +2,6 @@ import math
 import re
 from typing import Dict, List
 
-
 # Determine approximate character set size based on used character classes
 def _charset_size(password: str) -> int:
     size = 0
@@ -16,12 +15,10 @@ def _charset_size(password: str) -> int:
         size += 32
     return size or 1
 
-
 # Calculate entropy using log2(charset_size^length)
 def _entropy(password: str) -> float:
     charset = _charset_size(password)
     return round(len(password) * math.log2(charset), 2)
-
 
 # Compute score (0–100) based on rules + entropy contribution
 def _score(password: str, entropy: float) -> int:
@@ -48,7 +45,6 @@ def _score(password: str, entropy: float) -> int:
 
     return min(score, 100)
 
-
 # Convert numeric score to label
 def _strength_label(score: int) -> str:
     if score < 40:
@@ -56,7 +52,6 @@ def _strength_label(score: int) -> str:
     elif score < 70:
         return "Moderate"
     return "Strong"
-
 
 # Generate suggestions and warnings
 def _feedback(password: str) -> Dict[str, List[str]]:
@@ -87,7 +82,6 @@ def _feedback(password: str) -> Dict[str, List[str]]:
         warnings.append("Repeated characters detected")
 
     return {"suggestions": suggestions, "warnings": warnings}
-
 
 # Main function used by API
 def analyze_password(password: str):
