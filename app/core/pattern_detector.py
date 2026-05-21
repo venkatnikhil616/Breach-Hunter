@@ -1,7 +1,6 @@
 import re
 from typing import Dict, List
 
-
 # Common weak patterns
 COMMON_PATTERNS = [
     "password",
@@ -12,7 +11,6 @@ COMMON_PATTERNS = [
     "welcome",
 ]
 
-
 # Keyboard sequences (basic)
 KEYBOARD_SEQUENCES = [
     "qwerty",
@@ -22,11 +20,9 @@ KEYBOARD_SEQUENCES = [
     "67890",
 ]
 
-
 # Detect repeated characters (aaa, 1111)
 def detect_repeated(password: str) -> bool:
     return bool(re.search(r"(.)\1{2,}", password))
-
 
 # Detect sequential characters (abc, 123)
 def detect_sequences(password: str) -> bool:
@@ -42,7 +38,6 @@ def detect_sequences(password: str) -> bool:
             if sub in password:
                 return True
     return False
-
 
 # Detect keyboard patterns
 def detect_keyboard_patterns(password: str) -> bool:
