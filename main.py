@@ -15,7 +15,6 @@ from app.utils.logger import setup_logging
 
 console = Console()
 
-
 def check_password_strength(password):
     score = 0
     remarks = []
@@ -64,7 +63,6 @@ def check_password_strength(password):
 
     return score, strength, remarks
 
-
 def password_cli():
     while True:
         console.print("\n[bold cyan]=== Breach Hunter Password Analyzer ===[/bold cyan]\n")
@@ -90,7 +88,6 @@ def password_cli():
 
         console.print("\n[bold cyan]Ready for next password...[/bold cyan]")
 
-
 def run_api():
     # Load settings
     settings = get_settings()
@@ -108,7 +105,6 @@ def run_api():
         port=settings.PORT,
         reload=settings.DEBUG
     )
-
 
 def main():
     console.clear()
@@ -151,7 +147,6 @@ def main():
 
     else:
         console.print("[bold red]Invalid option[/bold red]")
-
 
 if __name__ == "__main__":
     main()
